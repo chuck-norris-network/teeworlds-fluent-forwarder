@@ -1,0 +1,10 @@
+{
+  "name": "teeworlds-fluent-forwarder",
+  "version": "0.0.0",
+  "description": "Forwards Teeworlds game events to Fluentd using econ connection",
+  "main": "./bin/teeworlds-fluent-forwarder",
+  "scripts": {
+  },
+  "author": "Black Roland (https://github.com/black-roland)",
+  "license": "MIT"
+}
