@@ -1,6 +1,6 @@
 {
   "name": "teeworlds-fluent-forwarder",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Forwards Teeworlds game events to Fluentd using econ connection",
   "main": "./bin/teeworlds-fluent-forwarder",
   "bin": {
@@ -15,7 +15,7 @@
     "coffee-script": "^1.10.0",
     "dotenv": "^2.0.0",
     "fluent-logger": "^1.1.0",
-    "teeworlds-econ": "*"
+    "teeworlds-econ": "git+https://github.com/black-roland/teeworlds-econ-js.git#faac025cf0407c0ee4f05c700e2618ccf2c3f52b"
   },
   "devDependencies": {
     "del": "^2.2.0",
