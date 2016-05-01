@@ -3,7 +3,7 @@ FluentLogger = require 'fluent-logger'
 
 { host, port, tagPrefix } = config.fluent
 
-console.log 'Connecting to Fluent...'
+console.log 'Connecting to Fluent on %s:%s...', host, port
 fluent = FluentLogger.createFluentSender tagPrefix, {
   host: host
   port: port
