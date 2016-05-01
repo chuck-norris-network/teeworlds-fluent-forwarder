@@ -1,6 +1,6 @@
 {
   "name": "teeworlds-fluent-forwarder",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Forwards Teeworlds game events to Fluentd using econ connection",
   "main": "./bin/teeworlds-fluent-forwarder",
   "bin": {
