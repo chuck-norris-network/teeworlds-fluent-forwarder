@@ -1,12 +1,13 @@
 config = require './config'
 FluentLogger = require 'fluent-logger'
 
-{ host, port, tagPrefix } = config.fluent
+{ host, port, tagPrefix, reconnectInterval } = config.fluent
 
 console.log 'Connecting to Fluent on %s:%s...', host, port
 fluent = FluentLogger.createFluentSender tagPrefix, {
-  host: host
-  port: port
+  host
+  port
+  reconnectInterval
 }
 
 fluent.on 'error', (err) ->
