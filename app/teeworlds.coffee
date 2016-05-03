@@ -1,25 +1,9 @@
 config = require './config'
 TeeworldsEcon = require 'teeworlds-econ'
+{ parseServers } = require './utils'
 
 servers = {}
 consoles = {}
-
-parseServers = (serversString) ->
-  throw new Error('Undefined Teeworlds servers list') unless serversString
-
-  servers = {}
-
-  items = serversString.split ','
-
-  for item in items
-    [ host, port, password ] = item.split ':'
-
-    unless host and port and password
-      throw new Error('Can\'t parse Teeworlds servers list')
-
-    servers[host + ':' + port] = { host, port, password }
-
-  return servers
 
 setupConsoles = (servers) ->
   consoles = {}
@@ -46,6 +30,8 @@ getConsoles = () ->
   return consoles
 
 servers = parseServers config.teeworlds.servers
+throw new Error('Can\'t parse Teeworlds server list') unless servers
+
 consoles = setupConsoles servers
 
 module.exports = {
