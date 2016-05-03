@@ -11,7 +11,7 @@ options.service = {
   type:        'systemd'
   name:        options.name
   description: options.description
-  exec:        '/usr/bin/teeworlds-fluent-forwarder'
+  exec:        "/usr/bin/#{options.name}"
   user:        'nobody'
   group:       'nobody'
 }
@@ -44,6 +44,10 @@ gulp.task 'rpm:config', ['rpm:setup'], () ->
   gulp.src './dist/teeworlds-fluent-forwarder.env'
     .pipe brass.util.rename(options.service.name)
     .pipe gulp.dest(path.join(rpm.buildRoot, '/etc/sysconfig'))
+    .pipe brass.util.stream (file, done) ->
+      file.config = true
+      file.noreplace = true
+      done null, file
     .pipe rpm.files()
 
 gulp.task 'rpm:binaries', ['rpm:files'], npm.binariesTask(pkg, rpm)
