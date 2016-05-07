@@ -15,7 +15,7 @@
     "coffee-script": "^1.10.0",
     "dotenv": "^2.0.0",
     "fluent-logger": "^1.1.0",
-    "teeworlds-econ": "^1.1.1"
+    "teeworlds-econ": "^1.2.0"
   },
   "devDependencies": {
     "del": "^2.2.0",
