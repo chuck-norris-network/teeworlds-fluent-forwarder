@@ -2,30 +2,32 @@
   "name": "teeworlds-fluent-forwarder",
   "version": "1.0.6",
   "description": "Forwards Teeworlds game events to Fluentd using econ connection",
+  "author": "Black Roland (https://github.com/black-roland)",
+  "license": "MIT",
   "main": "./bin/teeworlds-fluent-forwarder",
   "bin": {
     "teeworlds-fluent-forwarder": "./bin/teeworlds-fluent-forwarder"
   },
   "scripts": {
-    "start": "./bin/teeworlds-fluent-forwarder"
+    "start": "./bin/teeworlds-fluent-forwarder",
+    "current": "ncu -u -a"
   },
-  "author": "Black Roland (https://github.com/black-roland)",
-  "license": "MIT",
   "dependencies": {
     "coffee-script": "^1.10.0",
     "dotenv": "^2.0.0",
-    "fluent-logger": "^1.1.0",
-    "teeworlds-econ": "^1.2.0"
+    "fluent-logger": "^2.0.1",
+    "teeworlds-econ": "^1.2.1"
   },
   "devDependencies": {
-    "del": "^2.2.0",
-    "glob": "^7.0.3",
+    "del": "^2.2.1",
+    "glob": "^7.0.5",
     "gulp": "^3.9.1",
     "gulp-brass": "^0.1.11",
     "gulp-brass-npm": "0.0.6",
     "gulp-coffeelint": "^0.6.0",
     "gulp-exclude-gitignore": "^1.0.0",
-    "gulp-nodemon": "^2.0.6",
-    "run-sequence": "^1.1.5"
+    "gulp-nodemon": "^2.1.0",
+    "npm-check-updates": "^2.8.0",
+    "run-sequence": "^1.2.2"
   }
 }
