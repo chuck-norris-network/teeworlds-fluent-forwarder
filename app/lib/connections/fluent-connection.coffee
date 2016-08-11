@@ -2,8 +2,8 @@
 
 class FluentConnection extends FluentSender
 
-  constructor: (options) ->
-    super undefined, options
+  constructor: () ->
+    super
     @_setupErrorHandler()
 
 module.exports = FluentConnection
