@@ -1,4 +1,4 @@
-require('dotenv').config()
+require('dotenv').config(silent: true)
 { parseServers, filter } = require './utils'
 
 module.exports = {
