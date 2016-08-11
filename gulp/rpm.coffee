@@ -41,7 +41,7 @@ gulp.task 'rpm:service', ['rpm:setup'], () ->
     .pipe rpm.files()
 
 gulp.task 'rpm:config', ['rpm:setup'], () ->
-  gulp.src './dist/teeworlds-fluent-forwarder.env'
+  gulp.src '.env.example'
     .pipe brass.util.rename(options.service.name)
     .pipe gulp.dest(path.join(rpm.buildRoot, '/etc/sysconfig'))
     .pipe brass.util.stream (file, done) ->
