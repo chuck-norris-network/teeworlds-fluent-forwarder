@@ -7,8 +7,8 @@ After=network.target
 Type=simple
 ExecStart={{exec}}
 EnvironmentFile=/etc/sysconfig/{{name}}
-User=nobody
-Group=nobody
+User={{user}}
+Group={{group}}
 Restart=always
 
 [Install]

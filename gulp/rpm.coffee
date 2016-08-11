@@ -6,14 +6,15 @@ del   = require 'del'
 
 pkg = require '../package.json'
 options = npm.getOptions pkg
+options.version = options.version.replace '-', '.'
 options.installDir = "/usr/lib/#{options.name}"
 options.service = {
   type:        'systemd'
   name:        options.name
   description: options.description
   exec:        "/usr/bin/#{options.name}"
-  user:        'nobody'
-  group:       'nobody'
+  user:        options.name
+  group:       options.name
 }
 
 rpm = brass.create options
@@ -35,7 +36,8 @@ gulp.task 'rpm:files', ['rpm:source'], () ->
     .pipe rpm.files()
 
 gulp.task 'rpm:service', ['rpm:setup'], () ->
-  gulp.src './dist/teeworlds-fluent-forwarder.service'
+  gulp.src './dist/teeworlds-fluent-forwarder.service.hbs'
+    .pipe brass.util.rename("#{options.service.name}.service")
     .pipe brass.util.template(options.service)
     .pipe gulp.dest(path.join(rpm.buildRoot, '/lib/systemd/system'))
     .pipe rpm.files()
@@ -52,6 +54,10 @@ gulp.task 'rpm:config', ['rpm:setup'], () ->
 
 gulp.task 'rpm:binaries', ['rpm:files'], npm.binariesTask(pkg, rpm)
 
-gulp.task 'rpm:spec', ['rpm:files', 'rpm:binaries', 'rpm:service', 'rpm:config'], rpm.specTask()
+gulp.task 'rpm:spec', ['rpm:files', 'rpm:binaries', 'rpm:service', 'rpm:config'], () ->
+  gulp.src 'dist/teeworlds-fluent-forwarder.spec.hbs'
+    .pipe brass.util.rename("#{options.service.name}.spec")
+    .pipe rpm.spec()
+    .pipe gulp.dest(rpm.buildDir_SPECS)
 
 gulp.task 'rpm', ['rpm:spec'], rpm.buildTask()
