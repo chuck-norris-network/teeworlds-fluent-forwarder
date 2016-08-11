@@ -7,11 +7,12 @@ module.exports = (env) ->
       .replace('_', '.')
       .toLowerCase()
 
-    [ host, port, password ] = value.split ':'
-    port = parseInt port
+    for server in value.split ','
+      [ host, port, password ] = server.split ':'
+      port = parseInt port
 
-    return false unless tag or host or port or password
+      return false unless tag or host or port or password
 
-    servers.push { tag, host, port, password }
+      servers.push { tag, host, port, password }
 
   return servers
