@@ -1,4 +1,4 @@
-module.exports.parseServers = (serversString) ->
+module.exports = (serversString) ->
   return null unless serversString
 
   servers = {}
@@ -11,6 +11,3 @@ module.exports.parseServers = (serversString) ->
     servers[host + ':' + port] = { host, port, password }
 
   return servers
-
-module.exports.getTimestamp = () ->
-  return Math.floor(Date.now() / 1000)

@@ -4,4 +4,4 @@
 process.title = 'teeworlds-fluent-forwarder';
 
 require('coffee-script/register');
-require('../app/teeworlds-fluent-forwarder');
+require('../app');
