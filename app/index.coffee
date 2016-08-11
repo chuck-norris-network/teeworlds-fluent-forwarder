@@ -1,6 +1,15 @@
 config = require './config'
+{ FluentConnection, TeeworldsConnection } = require './lib/connections'
 
-console.log config
+fluent = new FluentConnection {
+  host: config['fluent host']
+  port: config['fluent port']
+  reconnectInterval: config['fluent reconnect interval']
+}
+
+teeworlds = new TeeworldsConnection config['teeworlds servers'][0]['host'], config['teeworlds servers'][0]['port'], config['teeworlds servers'][0]['password']
+
+fluent.emit 'teeworlds.dm', { test: true }
 
 # teeworlds = require './teeworlds'
 # fluent = require './fluent'
