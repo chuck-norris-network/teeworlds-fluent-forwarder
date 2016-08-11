@@ -1,14 +1,8 @@
 gulp        = require 'gulp'
-glob        = require 'glob'
-runSequence = require 'run-sequence'
+requireGlob = require 'require-glob'
 
-glob.sync('./gulp/*.coffee').forEach (task) -> require task
+requireGlob.sync './gulp/*.coffee'
 
-gulp.task 'dist', (done) ->
-  runSequence(
-    'coffeelint'
-    'rpm'
-    done
-  )
+gulp.task 'static', ['coffeelint']
 
-gulp.task 'default', ['develop', 'coffeelint']
+gulp.task 'default', ['static', 'develop']
