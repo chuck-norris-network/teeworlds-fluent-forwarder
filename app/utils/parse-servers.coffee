@@ -1,13 +1,17 @@
-module.exports = (serversString) ->
-  return null unless serversString
+module.exports = (env) ->
+  servers = []
 
-  servers = {}
+  for key, value of env
+    tag = key
+      .replace(/_SERVERS$/, '')
+      .replace('_', '.')
+      .toLowerCase()
 
-  items = serversString.split ','
+    [ host, port, password ] = value.split ':'
+    port = parseInt port
 
-  for item in items
-    [ host, port, password ] = item.split ':'
-    return null unless host and port and password
-    servers[host + ':' + port] = { host, port, password }
+    return false unless tag or host or port or password
+
+    servers.push { tag, host, port, password }
 
   return servers

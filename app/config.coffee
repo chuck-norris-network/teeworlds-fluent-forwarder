@@ -1,8 +1,10 @@
-fs = require 'fs'
-dotenv = require 'dotenv'
+require('dotenv').config()
+{ parseServers, filter } = require './utils'
 
-dotenv.config { silent: true }
+module.exports = {
+  'teeworlds servers': parseServers(filter(process.env, /_SERVERS$/))
 
-fs.readdirSync(__dirname + '/config').forEach (fileName) ->
-  [ _fileName, option ] = /^(.*)\.coffee$/.exec(fileName)
-  module.exports[option] = require './config/' + fileName
+  'fluent host': process.env.FLUENT_HOST ? 'localhost'
+  'fluent port': if process.env.FLUENT_PORT then parseInt process.env.FLUENT_PORT else 24224
+  'fluent reconnect interval': 30000
+}
