@@ -10,6 +10,8 @@ class Bind
       'pickup'
       'kill'
       'capture'
+      'flaggrab'
+      'flagreturn'
     ]
 
     @teeworlds = null
