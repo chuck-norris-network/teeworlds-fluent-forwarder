@@ -10,6 +10,7 @@ config['teeworlds servers'].forEach (server) ->
     host: config['fluent host']
     port: config['fluent port']
     reconnectInterval: config['fluent reconnect interval']
+    milliseconds: false
   }
 
   binding = new Bind()
