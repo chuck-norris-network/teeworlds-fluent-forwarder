@@ -1,9 +1,7 @@
-getTimestamp = require './get-timestamp'
-parseServers = require './parse-servers'
 filter = require './filter'
+parseServers = require './parse-servers'
 
 module.exports = {
-  getTimestamp
-  parseServers
   filter
+  parseServers
 }
