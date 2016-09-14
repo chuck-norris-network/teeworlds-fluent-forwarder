@@ -12,6 +12,7 @@ class Bind
       'capture'
       'flaggrab'
       'flagreturn'
+      'netban'
     ]
 
     @teeworlds = null
