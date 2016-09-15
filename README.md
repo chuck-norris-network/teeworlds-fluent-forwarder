@@ -1,5 +1,7 @@
 # Teeworlds Fluent Forwarder
 
+[![GitHub tag][github-image]][github-url] ![License][license-image]
+
 Forwards Teeworlds game events to Fluentd using econ connection.
 
 # Configuration
@@ -30,3 +32,7 @@ teeworlds.ctf.enter: {"hostname":"localhost:8304","player":"nameless tee","team"
 ## License
 
 MIT
+
+[github-image]: https://img.shields.io/github/tag/chuck-norris-network/teeworlds-fluent-forwarder.svg?style=flat-square
+[github-url]: https://github.com/chuck-norris-network/teeworlds-fluent-forwarder
+[license-image]: https://img.shields.io/npm/l/teeworlds-econ.svg?style=flat-square
