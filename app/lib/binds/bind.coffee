@@ -1,4 +1,5 @@
 { TeeworldsConnection, FluentConnection } = require '../connections'
+{ trimTwName } = require '../../utils'
 
 class Bind
 
@@ -32,6 +33,6 @@ class Bind
   bind: () ->
     @events.forEach (eventName) =>
       @teeworlds.on eventName, (event) =>
-        @fluent.emit eventName, Object.assign { hostname: @teeworlds.hostname }, event
+        @fluent.emit eventName, Object.assign { hostname: @teeworlds.hostname, name: trimTwName(@teeworlds.name) }, event
 
 module.exports = Bind
