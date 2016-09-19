@@ -10,6 +10,8 @@ Forwarder is configured using environment variables.
 
 `*_SERVERS` — Comma separated list of Teeworlds servers. Asterisk transforms to Fluentd tag.
 
+`TEEWORLDS_STATUS_CRON` — Execute `status` command by schedule.
+
 `FLUENT_HOST` — Fluentd daemon host.
 
 `FLUENT_PORT` — Fluentd daemon port.
@@ -17,16 +19,21 @@ Forwarder is configured using environment variables.
 # Example
 
 ```
-TEEWORLDS_DM_SERVERS=localhost:8303:secret TEEWORLDS_CTF_SERVERS=localhost:8304:secret ./bin/teeworlds-fluent-forwarder
+TEEWORLDS_DM_SERVERS="localhost:8303:secret" \
+TEEWORLDS_CTF_SERVERS="localhost:8304:secret" \
+TEEWORLDS_STATUS_CRON="0 */10 * * * *" \
+./bin/teeworlds-fluent-forwarder
 ```
 
 will produce following JSON:
 
-```
-teeworlds.dm.enter: {"hostname":"localhost:8303","player":"nameless tee","team":"spectators","ip":"127.0.0.1"}
-teeworlds.dm.kill: {"hostname":"localhost:8303","killer":"nameless tee","victim":"nameless tee","weapon":"rocket"}
-teeworlds.dm.leave: {"hostname":"localhost:8303","player":"nameless tee"}
-teeworlds.ctf.enter: {"hostname":"localhost:8304","player":"nameless tee","team":"spectators","ip":"127.0.0.1"}
+```json
+teeworlds.dm.enter: {"hostname":"localhost:8303","name":"Teeworlds DM server","player":"nameless tee","team":"spectators","client":"8.8.8.8:55555"}
+teeworlds.dm.kill: {"hostname":"localhost:8303","name":"Teeworlds DM server","killer":"nameless tee","victim":"nameless tee","weapon":"rocket"}
+teeworlds.dm.leave: {"hostname":"localhost:8303","name":"Teeworlds DM server","player":"nameless tee"}
+teeworlds.ctf.enter: {"hostname":"localhost:8304","name":"Teeworlds CTF server","player":"nameless tee","team":"spectators","client":"8.8.8.8:55555"}
+teeworlds.dm.status: {"hostname":"localhost:8304","name":"Teeworlds DM server","players":[{"cid":0,"client":"8.8.8.8:55555","player":"nameless tee","score":21,"admin":false}],"online":1}
+teeworlds.ctf.status: {"hostname":"localhost:8303","name":"Teeworlds CTF server","players":null,"online":0}
 ```
 
 ## License

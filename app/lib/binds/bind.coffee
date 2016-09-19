@@ -3,18 +3,20 @@
 
 class Bind
 
+  @events = [
+    'enter'
+    'leave'
+    'chat'
+    'pickup'
+    'kill'
+    'capture'
+    'flaggrab'
+    'flagreturn'
+    'netban'
+    'status'
+  ]
+
   constructor: () ->
-    @events = [
-      'enter'
-      'leave'
-      'chat'
-      'pickup'
-      'kill'
-      'capture'
-      'flaggrab'
-      'flagreturn'
-      'netban'
-    ]
 
     @teeworlds = null
     @fluent = null
@@ -31,7 +33,7 @@ class Bind
     throw new Error 'Undefined connection type'
 
   bind: () ->
-    @events.forEach (eventName) =>
+    Bind.events.forEach (eventName) =>
       @teeworlds.on eventName, (event) =>
         @fluent.emit eventName, Object.assign { hostname: @teeworlds.hostname, name: trimTwName(@teeworlds.name) }, event
 
