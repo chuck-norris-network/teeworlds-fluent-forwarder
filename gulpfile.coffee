@@ -1,7 +1,7 @@
 gulp        = require 'gulp'
 requireGlob = require 'require-glob'
 
-requireGlob.sync './gulp/*.coffee'
+requireGlob.sync './gulp_tasks/*.coffee'
 
 gulp.task 'static', ['coffeelint']
 

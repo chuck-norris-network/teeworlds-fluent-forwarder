@@ -15,7 +15,7 @@
     "start": "NODE_ENV=production ./bin/teeworlds-log-collector",
     "test": "gulp static",
     "rpm": "gulp rpm",
-    "current": "ncu -u -a"
+    "current": "gulp current"
   },
   "files": [
     "app/**/*",
