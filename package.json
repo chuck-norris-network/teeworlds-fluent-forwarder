@@ -1,18 +1,21 @@
 {
-  "name": "teeworlds-fluent-forwarder",
+  "name": "teeworlds-log-collector",
   "version": "2.0.1",
   "description": "Forwards Teeworlds game events to Fluentd using econ connection",
   "author": "Black Roland (https://github.com/black-roland)",
   "license": "MIT",
-  "main": "./bin/teeworlds-fluent-forwarder",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/chuck-norris-network/teeworlds-log-collector.git"
+  },
+  "bin": {
+    "teeworlds-log-collector": "./bin/teeworlds-log-collector"
+  },
   "scripts": {
-    "start": "./bin/teeworlds-fluent-forwarder",
+    "start": "NODE_ENV=production ./bin/teeworlds-log-collector",
     "test": "gulp static",
     "rpm": "gulp rpm",
     "current": "ncu -u -a"
-  },
-  "bin": {
-    "teeworlds-fluent-forwarder": "./bin/teeworlds-fluent-forwarder"
   },
   "files": [
     "app/**/*",

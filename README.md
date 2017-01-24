@@ -1,12 +1,12 @@
-# Teeworlds Fluent Forwarder
+# Teeworlds Log Collector
 
 [![GitHub tag][github-image]][github-url] ![License][license-image]
 
-Forwards Teeworlds game events to Fluentd using econ connection.
+Teeworlds Log Collector is a lightweight Node.js application that allows you to collect logs from [Teeworlds](https://www.teeworlds.com/) servers and forward game events  to [Fluentd](http://www.fluentd.org/) (data collector for unified logging layer).
 
 # Configuration
 
-Forwarder is configured using environment variables.
+Collector is configured using environment variables.
 
 `*_SERVERS` — Comma separated list of Teeworlds servers. Asterisk transforms to Fluentd tag.
 

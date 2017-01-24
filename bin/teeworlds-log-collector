@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 'use strict';
 
-process.title = 'teeworlds-fluent-forwarder';
+process.title = 'teeworlds-log-collector';
 
 require('coffee-script/register');
 require('../app');
