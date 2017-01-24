@@ -4,6 +4,11 @@
 
 Teeworlds Log Collector is a lightweight Node.js application that allows you to collect logs from [Teeworlds](https://www.teeworlds.com/) servers and forward game events  to [Fluentd](http://www.fluentd.org/) (data collector for unified logging layer).
 
+# Requirements
+
+- [Enabled Teeworlds econ](https://www.teeworlds.com/forum/viewtopic.php?id=8275).
+- [Fluentd](http://www.fluentd.org/).
+
 # Configuration
 
 Collector is configured using environment variables.
@@ -20,14 +25,32 @@ Collector is configured using environment variables.
 
 # Example
 
+Create simple `fluentd.conf`:
+
+```
+<source>
+  @type forward
+  port 24224
+  bind 127.0.0.1
+</source>
+
+<match **>
+  @type stdout
+</match>
+```
+
+...and start Fluentd with this command: `fluentd -c fluentd.conf`.
+
+Then run `./bin/teeworlds-log-collector` with necessary environment variables:
+
 ```
 TEEWORLDS_DM_SERVERS="localhost:8303:secret" \
 TEEWORLDS_CTF_SERVERS="localhost:8304:secret" \
 TEEWORLDS_STATUS_CRON="0 */10 * * * *" \
-./bin/teeworlds-fluent-forwarder
+./bin/teeworlds-log-collector
 ```
 
-will produce following JSON:
+Log collector will produce following output:
 
 ```json
 teeworlds.dm.enter: {"hostname":"localhost:8303","name":"Teeworlds DM server","player":"nameless tee","team":"spectators","client":"8.8.8.8:55555"}
@@ -37,6 +60,8 @@ teeworlds.ctf.enter: {"hostname":"localhost:8304","name":"Teeworlds CTF server",
 teeworlds.dm.status: {"hostname":"localhost:8304","name":"Teeworlds DM server","players":[{"cid":0,"client":"8.8.8.8:55555","player":"nameless tee","score":21,"admin":false}],"online":1}
 teeworlds.ctf.status: {"hostname":"localhost:8303","name":"Teeworlds CTF server","players":null,"online":0}
 ```
+
+Also check out [this awesome Fluentd plugins](http://www.fluentd.org/dataoutputs) and build your own data management and analytic system.
 
 ## License
 
