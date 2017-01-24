@@ -1,12 +1,12 @@
 {
   "name": "teeworlds-log-collector",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Forwards Teeworlds game events to Fluentd using econ connection",
   "author": "Black Roland (https://github.com/black-roland)",
   "license": "MIT",
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/chuck-norris-network/teeworlds-log-collector.git"
+    "type": "git",
+    "url": "https://github.com/chuck-norris-network/teeworlds-log-collector.git"
   },
   "bin": {
     "teeworlds-log-collector": "./bin/teeworlds-log-collector"
