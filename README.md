@@ -10,7 +10,9 @@ Collector is configured using environment variables.
 
 `*_SERVERS` — Comma separated list of Teeworlds servers. Asterisk transforms to Fluentd tag.
 
-`TEEWORLDS_STATUS_CRON` — Execute `status` command by schedule.
+`TEEWORLDS_STATUS_CRON` — Execute `status` command by schedule. Disabled by default.
+
+`TEEWORLDS_RAW` — Emit raw log messages with `server-name.raw` tag. Disabled by default.
 
 `FLUENT_HOST` — Fluentd daemon host.
 
