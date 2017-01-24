@@ -67,6 +67,6 @@ Also check out [this awesome Fluentd plugins](http://www.fluentd.org/dataoutputs
 
 MIT
 
-[github-image]: https://img.shields.io/github/tag/chuck-norris-network/teeworlds-fluent-forwarder.svg?style=flat-square
-[github-url]: https://github.com/chuck-norris-network/teeworlds-fluent-forwarder
+[github-image]: https://img.shields.io/github/tag/chuck-norris-network/teeworlds-log-collector.svg?style=flat-square
+[github-url]: https://github.com/chuck-norris-network/teeworlds-log-collector
 [license-image]: https://img.shields.io/npm/l/teeworlds-econ.svg?style=flat-square
