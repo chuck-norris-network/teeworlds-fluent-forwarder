@@ -4,6 +4,7 @@
 class Bind
 
   @events = [
+    'raw'
     'enter'
     'leave'
     'chat'

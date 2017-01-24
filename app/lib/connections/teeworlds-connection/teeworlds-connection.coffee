@@ -1,5 +1,6 @@
 TeeworldsEcon = require 'teeworlds-econ'
 { CronJob } = require 'cron'
+handlers = require './handlers'
 
 class TeeworldsConnection extends TeeworldsEcon
 
@@ -11,7 +12,10 @@ class TeeworldsConnection extends TeeworldsEcon
     @on 'error', (err) -> console.error "#{@hostname}: #{err.message}"
     @on 'reconnected', () -> console.info "Connection to #{@hostname} restored"
 
-    @on 'online', () -> new CronJob @options.cron, @cronTick, null, true if @options.cron
+    if @options.cron
+      @on 'online', () -> new CronJob @options.cron, @cronTick, null, true
+    if @options.raw
+      this.addHandler handlers.handleRaw
 
     @connect()
 

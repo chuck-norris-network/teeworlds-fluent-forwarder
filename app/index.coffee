@@ -6,6 +6,7 @@ binds = require './lib/binds'
 config['teeworlds servers'].forEach (server) ->
   teeworlds = new TeeworldsConnection server, {
     cron: config['teeworlds status cron']
+    raw: config['teeworlds raw']
   }
 
   fluent = new FluentConnection server.tag, {
